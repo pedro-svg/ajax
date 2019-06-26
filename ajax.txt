@@ -1,0 +1,32 @@
+Os tres passos para o AJAX
+(ASYNC JS AND XML)
+
+ele permite requisições assíncronas na mesma url,
+a resposta pode ser em diversos tipos de arquivo
+
+1
+instanciar o objeto ajax, lembre-se que não é necessário mencionar o objeto window, pois jpa estamos em escopo global
+const ajax = xmlhttprquest
+
+2
+agora, abriremos a requisição, passando um protocolo http válido (get,post,delete,etc.) e a url de onde sairá esses dados
+ajax.open(<protocolo>,<url>)
+
+3
+a resposta deve vir junto ao código 200 do http
+ajax.send(<data>)
+
+Para vermos as mudanças, adicionaremos os eventos, readystatechange, que verifica se uma requisição mudou de estado,
+
+e os estados são:
+
+o ajax.readyState nos informa em que estado a requisiçao esta
+
+0: nao enviado, quando o open nao é chamado
+1: conexao aberta, o open ja foi chamado
+2: header contedo pronto e recebido
+3:conteudo sendo carregado para sua manipulação
+4:pronto
+
+
+
