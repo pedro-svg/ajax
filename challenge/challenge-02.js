@@ -1,3 +1,5 @@
+
+
 (function(){
   'use strict'
  
@@ -15,26 +17,48 @@ function callable(){
       xhr.onreadystatechange = _ => {
       if( xhr.readyState === 4){
         if(xhr.status === 200){
-          resolve(JSON.parse(xhr.responseText)[0])
+          resolve(JSON.parse(xhr.responseText))
         }
         else{
-          reject('somethin bad happened')
+          xhr.status === 404 ? reject('user not found') : null
         }
+      }
+
+      else if(xhr.readyState === 3){
+        handleLoading()
       }
       }
       
     })
   }
   getUser()
-  .then( response => render(response))
-  .catch( error => console.log(error))
+  .then( response => renderList(response))
+  .catch( error => handleError(error))
 
-  // function render(json){
+  function handleLoading(){
+    const $ul = document.getElementById('list-container') 
+    let $li = document.createElement('li')
+    $li.appendChild(document.createTextNode('loading...'))
+    $ul.appendChild($li)
+  }
+
+  function handleError(error){
+    const $ul = document.getElementById('list-container') 
+    let $li = document.createElement('li')
+    $li.appendChild(document.createTextNode(error))
+    $ul.appendChild($li)
+  }
+
+  function renderList(repos){
     
-  //   console.log(json[0].name)
-  // }
+    const $ul = document.getElementById('list-container') 
 
-  // render()
+    repos.map( (el, index) => {
+        let $li = document.createElement('li')
+        $li.appendChild(document.createTextNode(el.name))
+        $ul.appendChild($li)
+    } )
+  }
 }
 
 document.getElementById('btn').onclick = callable
