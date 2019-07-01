@@ -1,5 +1,3 @@
-
-
 (function(){
   'use strict'
  
@@ -15,18 +13,14 @@ function callable(){
       xhr.send(null)
 
       xhr.onreadystatechange = _ => {
-      if( xhr.readyState === 4){
-        if(xhr.status === 200){
-          resolve(JSON.parse(xhr.responseText))
+        if( xhr.readyState === 4){
+          if(xhr.status === 200){
+            resolve(JSON.parse(xhr.responseText))
+          }
+          else{
+            xhr.status === 404 ? reject('user not found') : null
+          }
         }
-        else{
-          xhr.status === 404 ? reject('user not found') : null
-        }
-      }
-
-      else if(xhr.readyState === 3){
-        handleLoading()
-      }
       }
       
     })
@@ -35,25 +29,20 @@ function callable(){
   .then( response => renderList(response))
   .catch( error => handleError(error))
 
-  function handleLoading(){
-    const $ul = document.getElementById('list-container') 
-    let $li = document.createElement('li')
-    $li.appendChild(document.createTextNode('loading...'))
-    $ul.appendChild($li)
-  }
-
   function handleError(error){
     const $ul = document.getElementById('list-container') 
+    $ul.innerHTML=''
+ 
     let $li = document.createElement('li')
     $li.appendChild(document.createTextNode(error))
     $ul.appendChild($li)
   }
 
   function renderList(repos){
-    
     const $ul = document.getElementById('list-container') 
+    $ul.innerHTML=''; 
 
-    repos.map( (el, index) => {
+    repos.map( el => {      
         let $li = document.createElement('li')
         $li.appendChild(document.createTextNode(el.name))
         $ul.appendChild($li)
