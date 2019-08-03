@@ -5,7 +5,7 @@ function callable(){
   function getUser(){ 
     return new Promise( (resolve,reject) => {
 
-      const user = document.querySelector('[type="text"]').value
+      const user = document.querySelector('[type="search"]').value
       const url = ` https://api.github.com/users/${user}/repos`
       const xhr = new XMLHttpRequest()
 
@@ -50,6 +50,7 @@ function callable(){
   }
 }
 
-document.getElementById('btn').onclick = callable
-
+document.querySelector('button').onclick = callable
+document.querySelector('input').onkeypress = (e) => {if(e.keyCode == 13) callable()}
+  
 })()
