@@ -1,6 +1,7 @@
 * {
   outline: none;
   border: none;
+  text-decoration: none;
 }
 
 body {
@@ -61,7 +62,7 @@ li {
   align-items: center;
   background-color: rgba(228, 209, 209, 0.096);
   border-radius: 5px;
-  box-shadow: 0 6px 2px 0 #6D214F;
+  box-shadow: 0 6px 2px 0 #546de5;
   display: flex;
   font-family: 1.3rem;
   height: 25vh;
@@ -73,7 +74,13 @@ li {
 li:hover {
   transition: 1s;
   background-color: rgba(158, 147, 147, 0.096);
-  box-shadow: 0 6px 2px 0 #B33771;
+  box-shadow: 0 6px 2px 0 #778beb;
+}
+li a {
+  color: #182C61;
+}
+li a:hover {
+  text-decoration: underline;
 }
 
 /*# sourceMappingURL=styles.css.map */

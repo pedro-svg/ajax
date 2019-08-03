@@ -1,9 +1,10 @@
-$primary: #6D214F ;
-$secondary: #B33771 ;
+$primary: #546de5 ;
+$secondary: #778beb ;
 
 *{
   outline: none;
   border: none;
+  text-decoration: none;
 }
 
 body {
@@ -82,5 +83,13 @@ li{
    transition: 1s; 
    background-color: rgba(158, 147, 147, 0.096);
    box-shadow: 0 6px 2px 0 $secondary;
+  }
+
+  a{
+    color: #182C61; 
+  }
+
+  a:hover{
+   text-decoration: underline;
   }
 }
