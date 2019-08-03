@@ -8,7 +8,7 @@ a resposta pode ser em diversos tipos de arquivo
 
 
 1. Instanciar o objeto ajax, não é necessário acessar o objeto window, pois já estamos em escopo global
-** const ajax = new xmlhttprquest() **
+**const ajax = new xmlhttprquest()**
 
 1. Abriremos a requisição, passando como argumentos um protocolo http válido (get, post, delete, etc.), a url que queremos solicitar os dados, e se a operação será assíncrona, um valor boleano para decidir se o método send() não retornará nada até qua a requisição seja recebida.
 
