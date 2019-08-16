@@ -29,7 +29,7 @@
       .catch(error => handleError(error))
 
     function handleError(error) {
-      const $ul = document.getElementById('list-container')
+      const $ul = document.querySelector('.repos-container')
       $ul.innerHTML = ''
 
       let $li = document.createElement('li')
@@ -38,7 +38,7 @@
     }
 
     function renderList(repos) {
-      const $ul = document.getElementById('list-container')
+      const $ul = document.querySelector('.repos-container')
       $ul.innerHTML = '';
 
       repos.map(el => {
